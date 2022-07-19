@@ -36,10 +36,10 @@ const Home = () => {
 
     const onScroll = () => {
         if (listInnerRef.current) {
-        const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
-        if (scrollTop + clientHeight === scrollHeight) {
-            console.log("reached bottom");
-        }
+            const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
+            if (scrollTop + clientHeight === scrollHeight) {
+                console.log("reached bottom");
+            }
         }
     };
 
