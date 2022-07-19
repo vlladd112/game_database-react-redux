@@ -19,15 +19,15 @@ const currentDate = `${currentYear}-${currentMonth}-${currentDay}`;
 const lastYear = `${currentYear - 1}-${currentMonth}-${currentDay}`;
 const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
 
-// Popular/upcoming/new games
-// const popular_games = `games?key=${process.env.REACT_APP_RAWG_API_KEY}&dates=${lastYear},${currentDate}&ordring=-rating&page_size=20`;
-// const upcoming_games = `games?key=${process.env.REACT_APP_RAWG_API_KEY}&dates=${currentDate},${nextYear}&ordering=-added&page_size=10`;
-// const new_games = `games?key=${process.env.REACT_APP_RAWG_API_KEY}&dates=${lastYear},${currentDate}&ordering=-released&page_size=10`;
+// popular/upcoming/new games
+const popular_games = `games?key=${process.env.REACT_APP_RAWG_API_KEY}&dates=${lastYear},${currentDate}&ordring=-rating&page_size=20`;
+const upcoming_games = `games?key=${process.env.REACT_APP_RAWG_API_KEY}&dates=${currentDate},${nextYear}&ordering=-added&page_size=10`;
+const new_games = `games?key=${process.env.REACT_APP_RAWG_API_KEY}&dates=${lastYear},${currentDate}&ordering=-released&page_size=10`;
 
 // simulating pagination
-const popular_games = `games?key=${process.env.REACT_APP_RAWG_API_KEY}&dates=${lastYear},${currentDate}&ordering=-rating&page=1&page_size=10`;
-const upcoming_games = `games?key=${process.env.REACT_APP_RAWG_API_KEY}&dates=${lastYear},${currentDate}&ordering=-rating&page=2&page_size=10`;
-const new_games = `games?key=${process.env.REACT_APP_RAWG_API_KEY}&dates=${lastYear},${currentDate}&ordering=-rating&page_size=20`;
+// const popular_games = `games?key=${process.env.REACT_APP_RAWG_API_KEY}&dates=${lastYear},${currentDate}&ordering=-rating&page=1&page_size=10`;
+// const upcoming_games = `games?key=${process.env.REACT_APP_RAWG_API_KEY}&dates=${lastYear},${currentDate}&ordering=-rating&page=2&page_size=10`;
+// const new_games = `games?key=${process.env.REACT_APP_RAWG_API_KEY}&dates=${lastYear},${currentDate}&ordering=-rating&page_size=20`;
 
 export const popularGamesUrl = () => `${base_url}${popular_games}`;
 export const upcomingGamesUrl = () => `${base_url}${upcoming_games}`;
