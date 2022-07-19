@@ -16,18 +16,18 @@ const Home = () => {
     const location = useLocation();
     const pathId = location.pathname.split("/")[2];
     // Fetch games
+
+    const { popularGames, newGames, upcomingGames, searchedGames } = useSelector((state) => state.games);
+
     const dispatch = useDispatch();
     useEffect(() => {
-        // onScroll()
       dispatch(loadGames());
-    //   const { popularGames, newGames, upcomingGames, searchedGames } = useSelector((state) => state.games);
-      console.log('pppppp', popularGames)
-    }, [dispatch]);
+    }, [dispatch, popularGames]);
 
     // Get that api data back
     // this const is shorthand for populargames = state.games.popularGames
     // and extracts the values directly
-    const { popularGames, newGames, upcomingGames, searchedGames } = useSelector((state) => state.games);
+    // const { popularGames, newGames, upcomingGames, searchedGames } = useSelector((state) => state.games);
 
     setTimeout(useSelector((state) => state.games), 1000);
 
@@ -35,7 +35,6 @@ const Home = () => {
     const listInnerRef = useRef();
 
     const onScroll = () => {
-        console.log('aaaa',listInnerRef);
         if (listInnerRef.current) {
         const { scrollTop, scrollHeight, clientHeight } = listInnerRef.current;
         if (scrollTop + clientHeight === scrollHeight) {
@@ -46,7 +45,7 @@ const Home = () => {
 
     return (
         <GameList onScroll={onScroll} variants={fadeIn} initial="hidden" animate="show">
-            {/* <AnimateSharedLayout type="crossfade"> */}
+            <AnimateSharedLayout type="crossfade">
                 <AnimatePresence>
                     {pathId && <GameDetails pathId={pathId}/> }
                 </AnimatePresence>
@@ -65,7 +64,7 @@ const Home = () => {
                     </Games>
                 </div>
                 )}
-                {/* <h2>Upcoming Games</h2>
+                <h2>Upcoming Games</h2>
                 <Games>
                     {upcomingGames.map(game => (
                         <Game
@@ -75,7 +74,7 @@ const Home = () => {
                             image={game.background_image}
                             key={game.id}/>
                     ))}
-                </Games> */}
+                </Games>
                 <h2>Popular Games</h2>
                 <Games>
                     {popularGames.map(game => (
@@ -87,7 +86,7 @@ const Home = () => {
                             key={game.id}/>
                     ))}
                 </Games>
-                {/* <h2>New Games</h2>
+                <h2>New Games</h2>
                 <Games>
                     {newGames.map(game => (
                         <Game
@@ -97,8 +96,8 @@ const Home = () => {
                             image={game.background_image}
                             key={game.id}/>
                     ))}
-                </Games> */}
-            {/* </AnimateSharedLayout> */}
+                </Games>
+             </AnimateSharedLayout>
         </GameList>
     );
 }
